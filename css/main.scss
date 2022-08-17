@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import "_mixin";
+
+header{
+  position: fixed; z-index: 9000;
+  .utill{
+    position: fixed; bottom: 10%; right: 10%; 
+    >li{
+      li{padding: 10px 20px; border: 1px solid #333; margin-bottom: 10px; text-align: center; cursor: pointer;}
+    }
+  }
+}
+
+#container{
+  @include flex(c); width: 100vw;height: 100vh;
+  .img_wrap{width: 100%; position: relative; z-index:1; 
+    .img_list{
+      @include flex(c); transition: all .3s;cursor: pointer;
+      &.zoom{transform: scale(1.5); transform-origin: left top; }
+      li{
+        display: none; width: 100%; max-width:600px;box-shadow: 0 0 10px #eee;
+        &.this_page,&.next_page{display: block;}
+      }
+    }
+
+  }
+  .btn{
+    position: fixed; top: 50%; z-index: 9500; cursor: pointer;
+    &.prev{left: 20px; transform: rotate(180deg);}
+    &.next{right: 20px; }
+    &.disable{opacity: .3; pointer-events: none;}
+    img{width: 42px; height: auto; margin: 10px; }
+  }
+}
+
+.img_thums_wrap{@include posi_cen; position: fixed;z-index: 9999; display: none;
+  &.on{display: flex; }
+  .img_list{
+    display: flex; width: 500px; height: auto; max-height: 500px; background: #eee; padding: 10px; flex-wrap: wrap; overflow-y: scroll; 
+    &::-webkit-scrollbar{width: 6px; border-radius: 3px;}
+    &::-webkit-scrollbar-thumb{width: 6px; border-radius: 3px; background: #999;}
+    li{
+      width: 20%; margin:0 10px; cursor: pointer; position: relative;
+      span{@include posi_cen(); top: 90%; font-size: 12px;}
+    }
+  }
+}
+
+.bg{
+  @include posi_cen; position: fixed; z-index: 9998; background: rgba(0,0,0,.75); width: 100%;height: 100%;display: none;
+  &.on{display: block;}
+}
+.toast_m{position: fixed; top: 10%; left: 50%; transform: translateX(-50%); background: #eee; padding: 0 20px; border-radius: 20px; line-height: 40px; display: none; z-index: 9999;
+}
+
+.mini_view_wrap{
+  position: fixed; top: 5%; left: 5%; background: #f9f9f9; z-index: 9999; box-shadow: 0 0 5px #999; display: none; border: 2px solid #999;
+  &.on{display: block}
+  ul{
+    @include flex(c); width: 100%; height: 100%;
+    li{ width: fit-content; height: 100%;
+      img{height: 100%; object-fit: contain;}
+    }
+  }
+  .view{width: 5vw; height: 5vh; position: absolute; top: 0; left: 0; outline: 2px solid red; }
+}

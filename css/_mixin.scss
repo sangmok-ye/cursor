@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@mixin flex($j){
+  display: flex;
+  align-items: center;
+  @if($j == 'sb'){
+    justify-content: space-between;
+  } @else if($j == 'fs'){
+    justify-content: flex-start;
+  } @else{
+    justify-content: center;
+  }
+}
+
+@mixin posi_cen{
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}

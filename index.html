@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0; box-sizing: border-box;}
+        ul,li{list-style: none;}
+        img{width: 50%; height: auto;}
+        ul{display: flex; max-width: 1200px; margin: 0 auto; position: relative;}
+        li{backface-visibility: hidden; transition: all .5s; transform-origin: left top; display: none; position: absolute; top: 0; left: 0;}
+        .prev,
+        .this,
+        .next,
+        .next_n{display: block;}
+        .prev{}
+        .this{transform: translateX(50%);}
+        .next{transform: translateX(50%) rotateY(180deg);transition: transform .5s .5s;}
+        .next_n{transform: translateX(50%);z-index: -1;}
+        span{position: fixed; top: 50%; right: 10px; font-size: 20px;;}
+        .prev_btn{right: auto; left: 10px;}
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="prev"><img src="img/page/ebook_2.jpg" alt=""></li>
+        <li class="this"><img src="img/page/ebook_3.jpg" alt=""></li>
+        <li class="next"><img src="img/page/ebook_4.jpg" alt=""></li>
+        <li class="next_n"><img src="img/page/ebook_5.jpg" alt=""></li>
+        <li><img src="img/page/ebook_6.jpg" alt=""></li>
+        <li><img src="img/page/ebook_7.jpg" alt=""></li>
+        <li><img src="img/page/ebook_8.jpg" alt=""></li>
+        <li><img src="img/page/ebook_9.jpg" alt=""></li>
+        <li><img src="img/page/ebook_10.jpg" alt=""></li>
+        <li><img src="img/page/ebook_11.jpg" alt=""></li>
+        <li><img src="img/page/ebook_12.jpg" alt=""></li>
+    </ul>
+    <span class="prev_btn">이전장</span>
+    <span class="next_btn">다음장</span>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(".next_btn").click(function(){
+
+        let idx = $(".prev").index() + 2
+        $("li").removeClass()
+        $("li").eq(idx).addClass("prev")
+        $("li").eq((idx+1)).addClass("this")
+        $("li").eq((idx+2)).addClass("next")
+        $("li").eq((idx+3)).addClass("next_n")
+    })
+    $(".prev_btn").click(function(){
+        let idx = $(".prev").index() -2
+        $("li").removeClass()
+        $("li").eq(idx).addClass("prev")
+        $("li").eq((idx+1)).addClass("this")
+        $("li").eq((idx+2)).addClass("next")
+        $("li").eq((idx+3)).addClass("next_n")
+    })
+</script>
+</html>
